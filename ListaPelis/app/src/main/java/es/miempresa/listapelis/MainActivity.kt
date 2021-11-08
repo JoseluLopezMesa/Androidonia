@@ -1,5 +1,6 @@
 package es.miempresa.listapelis
 
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,15 +21,30 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("joselu","onDestroy")
+        Log.d("joselu","La actividad se ha destruido")
     }
     override fun onPause() {
         super.onPause()
-        Log.d("joselu","onPause")
+        Log.d("joselu","Sale de estado visible")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("joselu","onStop")
+        Log.d("joselu","Sale de estado foreground")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("joselu","onRestar")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("joselu","La actividad se ha creado")
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.d("joselu","Hay un cambio de configuración")
     }
 }
