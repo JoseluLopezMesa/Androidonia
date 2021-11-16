@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Film List</string>
     <string name="hello">Hello World!</string>
+    <string name="title">Venom: Let there be carnage</string>
+    <string name="director">Director: Andy Serkis</string>
+    <string name="textBuy">Buy</string>
+    <string name="textRent">Rent</string>
 </resources>
