@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lista Pelis</string>
+    <string name="hello">Hola Mundo!</string>
+    <string name="title">Venom: Habrá matanza</string>
+    <string name="director">Director: Andy Serkis</string>
+    <string name="textBuy">Comprar</string>
+    <string name="textRent">Alquilar</string>
+</resources>
