@@ -1,4 +1,3 @@
 package es.miempresa.domain
 
-class Film {
-}
+data class Film ( val title: String )
