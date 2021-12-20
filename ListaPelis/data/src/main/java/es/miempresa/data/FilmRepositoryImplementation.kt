@@ -5,9 +5,6 @@ import es.miempresa.domain.FilmRepository
 import javax.inject.Inject
 
 
-class FilmRepositoryImplementation @Inject constructor():FilmRepository {
-    override fun getFilm() = Film("Venom",
-                                "",
-                                 0.0,
-                            "")
+class FilmRepositoryImplementation @Inject constructor(private val dataSource: HardcodedDataSource ):FilmRepository {
+    override fun getFilm() = dataSource.getFilm()
 }
