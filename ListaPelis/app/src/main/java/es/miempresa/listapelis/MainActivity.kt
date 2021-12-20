@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
+import es.miempresa.domain.GetFilmListUseCase
 import es.miempresa.domain.GetFilmUseCase
 import javax.inject.Inject
 
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var log: PelisLog
     @Inject
     lateinit var film: GetFilmUseCase
+    @Inject
+    lateinit var filmList: GetFilmListUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,9 @@ class MainActivity : AppCompatActivity() {
 
         val executedFilm = film.execute()
         log.log(executedFilm.title)
+
+        val executeFilmList = filmList.execute()
+        log.log(executeFilmList.joinToString { "," })
 
         Toast.makeText(this, "Pulsa sobre Hola Mundo", Toast.LENGTH_LONG).show()
     }
