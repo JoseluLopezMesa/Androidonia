@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.filmDirector.text = "Juanito"
-        binding.filmTitle.text = resources.getString(R.string.hello)
+        binding.filmDirector.text = resources.getString(R.string.director)
+        binding.filmTitle.text = resources.getString(R.string.title)
         binding.textView.text = "Press to clean"
-        binding.imageView.setImageResource(R.drawable.ic_launcher_background)
+        binding.imageView.setImageResource(R.drawable.venom)
         log.log("onCreate")
 
         val executedFilm = film.execute()
