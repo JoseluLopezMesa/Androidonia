@@ -1,52 +1,69 @@
 package es.miempresa.listapelis
 
 import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
+import es.miempresa.domain.GetFilmListUseCase
+import es.miempresa.domain.GetFilmUseCase
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var log: PelisLog
+    @Inject
+    lateinit var film: GetFilmUseCase
+    @Inject
+    lateinit var filmList: GetFilmListUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("joselu","onCreate")
+        log.log("onCreate")
+
+        val executedFilm = film.execute()
+        log.log(executedFilm.title)
+
+        val executeFilmList = filmList.execute()
+        log.log(executeFilmList.joinToString { "," })
+
         Toast.makeText(this, "Pulsa sobre Hola Mundo", Toast.LENGTH_LONG).show()
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("joselu","onResume")
+        log.log("onResume")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("joselu","La actividad se ha destruido")
+        log.log("La actividad se ha destruido")
     }
     override fun onPause() {
         super.onPause()
-        Log.d("joselu","Sale de estado visible")
+        log.log("Sale de estado visible")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("joselu","Sale de estado foreground")
+        log.log("Sale de estado foreground")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.d("joselu","onRestar")
+        log.log("onRestar")
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d("joselu","La actividad se ha creado")
+        log.log("La actividad se ha creado")
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        Log.d("joselu","Hay un cambio de configuración")
+        log.log("Hay un cambio de configuración")
     }
 }
