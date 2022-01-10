@@ -3,6 +3,7 @@ package es.miempresa.listapelis
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import es.miempresa.domain.GetFilmListUseCase
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var filmList: GetFilmListUseCase
     private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
