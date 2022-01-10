@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import es.miempresa.domain.GetFilmListUseCase
 import es.miempresa.domain.GetFilmUseCase
+import es.miempresa.listapelis.databinding.ActivityMainBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -18,10 +19,16 @@ class MainActivity : AppCompatActivity() {
     lateinit var film: GetFilmUseCase
     @Inject
     lateinit var filmList: GetFilmListUseCase
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.filmDirector.text = "Juanito"
+        binding.filmTitle.text = resources.getString(R.string.hello)
+        binding.textView.text = "Press to clean"
+        binding.imageView.setImageResource(R.drawable.ic_launcher_background)
         log.log("onCreate")
 
         val executedFilm = film.execute()
