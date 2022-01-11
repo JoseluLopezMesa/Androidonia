@@ -13,10 +13,13 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val useCase: GetFilmUseCase
 ): ViewModel(),LifecycleObserver {
-    private  val filmLiveData = MutableLiveData<Film>()
-    val film: LiveData<Film> = filmLiveData
+    private  val filmLiveData = MutableLiveData<FilmDataView>()
+    val film: LiveData<FilmDataView> = filmLiveData
 
     fun loadFilm(){
-        filmLiveData.value = useCase.execute()
+        val loadedFilm = useCase .execute()
+        filmLiveData.value = FilmDataView(loadedFilm.title,loadedFilm.directorName)
     }
 }
+
+data class  FilmDataView(val title:String,val director:String)

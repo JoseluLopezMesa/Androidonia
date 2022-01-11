@@ -32,13 +32,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.imageView.setImageResource(R.drawable.venom)
+        binding.textView.text = resources.getString(R.string.hello)
         log.log("onCreate")
 
         viewModel.loadFilm()
         viewModel.film.observe(this){
-            binding.filmDirector.text = resources.getString(R.string.director)
-            binding.filmTitle.text = resources.getString(R.string.title)
-            binding.textView.text = resources.getString(R.string.hello)
+            binding.filmDirector.text = it.director
+            binding.filmTitle.text = it.title
         }
         //val executedFilm = film.execute()
         //log.log(executedFilm.title)
