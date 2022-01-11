@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.AndroidEntryPoint
+import es.miempresa.domain.Film
 import es.miempresa.domain.GetFilmListUseCase
 import es.miempresa.domain.GetFilmUseCase
 import es.miempresa.listapelis.databinding.ActivityMainBinding
@@ -16,25 +18,30 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var log: PelisLog
-    @Inject
-    lateinit var film: GetFilmUseCase
+    //@Inject
+    //lateinit var film: GetFilmUseCase
     @Inject
     lateinit var filmList: GetFilmListUseCase
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.filmDirector.text = resources.getString(R.string.director)
-        binding.filmTitle.text = resources.getString(R.string.title)
-        binding.textView.text = "Press to clean"
+
         binding.imageView.setImageResource(R.drawable.venom)
         log.log("onCreate")
 
-        val executedFilm = film.execute()
-        log.log(executedFilm.title)
+        viewModel.loadFilm()
+        viewModel.film.observe(this){
+            binding.filmDirector.text = resources.getString(R.string.director)
+            binding.filmTitle.text = resources.getString(R.string.title)
+            binding.textView.text = resources.getString(R.string.hello)
+        }
+        //val executedFilm = film.execute()
+        //log.log(executedFilm.title)
 
         val executeFilmList = filmList.execute()
         log.log(executeFilmList.joinToString { "," })
