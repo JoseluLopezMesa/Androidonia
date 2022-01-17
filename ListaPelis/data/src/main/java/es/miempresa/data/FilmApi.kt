@@ -11,7 +11,9 @@ interface FilmApi {
                         @Query("language")language:String,
                         @Query("api_key")apiKey:String = API_KEY):FilmDto
 
-
+    @GET("movie/{id}/credits")
+    suspend fun getFilm(@Path("id")filmId:Int,
+                        @Query("api_key")apiKey:String = API_KEY):CreditsDto
 
 
 }
