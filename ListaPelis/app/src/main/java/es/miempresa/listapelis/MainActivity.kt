@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         binding.textView.text = resources.getString(R.string.hello)
         log.log("onCreate")
 
-        viewModel.loadFilm()
+        viewModel.loadFilm(550)
         viewModel.film.observe(this){
             binding.filmDirector.text = it.director
             binding.filmTitle.text = it.title

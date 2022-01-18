@@ -5,8 +5,8 @@ import javax.inject.Inject
 class GetFilmUseCase @Inject constructor( // Quiero que la crees por mi con Inject
     private  val repository: FilmRepository)
 {
-    fun execute():Film { //execute,run, etc. Devuelve la pelicula
-        return repository.getFilm()
+    suspend fun execute(id:Int,language:String):Film? { //execute,run, etc. Devuelve la pelicula
+        return repository.getFilm(id,language)
     }
 
 }

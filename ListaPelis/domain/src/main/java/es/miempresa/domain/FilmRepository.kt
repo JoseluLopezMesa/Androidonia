@@ -1,6 +1,6 @@
 package es.miempresa.domain
 
 interface FilmRepository {
-    fun getFilm():Film
+    suspend fun getFilm(id:Int,language:String):Film?
     fun getFilmList():List<Film>
 }
