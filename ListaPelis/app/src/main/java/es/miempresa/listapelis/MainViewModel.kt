@@ -1,5 +1,6 @@
 package es.miempresa.listapelis
 
+import android.content.ClipDescription
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -26,10 +27,13 @@ class MainViewModel @Inject constructor(private val useCase: GetFilmUseCase
         job = CoroutineScope(Dispatchers.IO).launch{
             val loadedFilm = useCase.execute(550,language)
             withContext(Dispatchers.Main){
-                if(loadedFilm != null){
+                loadedFilm?.let{
                     filmLiveData.value = FilmDataView(
-                        loadedFilm.title,
-                    loadedFilm.directorName ?:""
+                        it.title,
+                    it.directorName ?:"",
+                        it.description,
+                        it.urlImg,
+                        it.rating
                     )
                 }
             }
@@ -43,4 +47,4 @@ class MainViewModel @Inject constructor(private val useCase: GetFilmUseCase
     }
 }
 
-data class  FilmDataView(val title:String,val director:String)
+data class  FilmDataView(val title:String,val directorName:String,val description: String,val urlImage:String?,val rating:Double)

@@ -37,8 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.loadFilm(550)
         viewModel.film.observe(this){
-            binding.filmDirector.text = it.director
+            binding.filmDirector.text = it.directorName
             binding.filmTitle.text = it.title
+            binding.descriptionFilm.text = it.description
+            binding.ratingBar.rating = it.rating.toFloat()
         }
         //val executedFilm = film.execute()
         //log.log(executedFilm.title)

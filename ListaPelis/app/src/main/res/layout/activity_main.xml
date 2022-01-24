@@ -13,14 +13,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        tools:text="@string/hello"
         android:textColor="@color/primary"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/filmDirector"
-        app:layout_constraintTop_toBottomOf="@+id/filmDirector"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+        app:layout_constraintStart_toEndOf="@+id/ratingBar"
+        app:layout_constraintTop_toTopOf="@+id/ratingBar"
+        tools:text="@string/hello" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -39,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <TextView
         android:id="@+id/filmTitle"
@@ -80,7 +78,7 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:isIndicator="true"
         android:numStars="5"
         android:progressBackgroundTint="@color/accent"
         android:progressTint="@color/primary"
@@ -93,11 +91,23 @@
         android:id="@+id/filmDirector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        tools:text="@string/director"
         android:textColor="@color/cardview_light_background"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        tools:text="@string/director" />
+
+    <TextView
+        android:id="@+id/descriptionFilm"
+        android:layout_width="330dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/filmTitle"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/filmTitle"
+        app:layout_constraintTop_toBottomOf="@+id/filmDirector" />
 </androidx.constraintlayout.motion.widget.MotionLayout>
