@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import es.miempresa.domain.Film
 import es.miempresa.domain.GetFilmListUseCase
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             binding.filmTitle.text = it.title
             binding.descriptionFilm.text = it.description
             binding.ratingBar.rating = it.rating.toFloat()
+            Glide.with(this).load(it.urlImage).into(binding.imageView)
         }
         //val executedFilm = film.execute()
         //log.log(executedFilm.title)
