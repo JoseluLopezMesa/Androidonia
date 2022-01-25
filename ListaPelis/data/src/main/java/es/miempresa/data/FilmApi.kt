@@ -16,5 +16,9 @@ interface FilmApi {
     suspend fun getCredits(@Path("id")filmId:Int,
                         @Query("api_key")apiKey:String = API_KEY):CreditsDto
 
+    @GET("movie/popular")
+    suspend fun getPopular(@Query("language")language:String,
+                           @Query("api_key")apiKey:String = API_KEY):FilmListResultDto
+
 
 }

@@ -6,15 +6,15 @@ import java.util.concurrent.ExecutionException
 import javax.inject.Inject
 
 
-class FilmRepositoryImplementation @Inject constructor(private val dataSource: ServerDataSource ):FilmRepository {
+class FilmRepositoryImplementation @Inject constructor(private val serverDataSource: ServerDataSource ):FilmRepository {
     override suspend fun getFilm(id:Int,language:String):Film? {
-        return try {
-            dataSource.getFilm(id, language)
-        } catch (e: Exception) {
-            null
-        }
+        return runCatching {
+            serverDataSource.getFilm(id,language)
+        }.getOrNull()
     }
-    override fun getFilmList(): List<Film> {
-        return emptyList()
+    override suspend fun getFilmList(language: String): List<Film>? {
+        return runCatching {
+            serverDataSource.getFilms(language)
+        }.getOrNull()
     }
 }
