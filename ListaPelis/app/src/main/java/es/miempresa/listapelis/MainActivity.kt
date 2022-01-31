@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var log: PelisLog
     //@Inject
     //lateinit var film: GetFilmUseCase
-    @Inject
-    lateinit var filmList: GetFilmListUseCase
+    //@Inject
+    //lateinit var filmList: GetFilmListUseCase
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
 
@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
         //val executedFilm = film.execute()
         //log.log(executedFilm.title)
 
-        val executeFilmList = filmList.execute()
-        log.log(executeFilmList.joinToString { "," })
+        //val executeFilmList = filmList.execute()
+        //log.log(executeFilmList.joinToString { "," })
 
         Toast.makeText(this, "Pulsa sobre Hola Mundo", Toast.LENGTH_LONG).show()
     }

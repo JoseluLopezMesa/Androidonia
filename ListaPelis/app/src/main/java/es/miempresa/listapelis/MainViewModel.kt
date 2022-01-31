@@ -24,6 +24,7 @@ class MainViewModel @Inject constructor(private val useCase: GetFilmUseCase
         val language = Locale.getDefault().language
         //val loadedFilm = useCase .execute()
         //filmLiveData.value = FilmDataView(loadedFilm.title,loadedFilm.directorName)
+
         job = CoroutineScope(Dispatchers.IO).launch{
             val loadedFilm = useCase.execute(550,language)
             withContext(Dispatchers.Main){
@@ -39,6 +40,7 @@ class MainViewModel @Inject constructor(private val useCase: GetFilmUseCase
             }
 
         }
+
     }
 
     override fun onCleared() {
