@@ -24,7 +24,8 @@ class ServerDataSource @Inject constructor() {
 
     suspend fun getFilms(language: String):List<Film>{
         return api.getPopular(language).films.map {
-            Film(it.id,it.title,it.imageUrl,it.rating,"",it.description,"","")
+            val image = getFullUrl(it.imageUrl)
+            Film(it.id,it.title,image,it.rating,"",it.description,"","")
         }
     }
     private fun getFullUrl(imageUrl:String)= imageUrl?.let {
