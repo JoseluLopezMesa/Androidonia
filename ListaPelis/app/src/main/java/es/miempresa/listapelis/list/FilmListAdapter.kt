@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import es.miempresa.listapelis.databinding.FilmItemBinding
 import javax.inject.Inject
 
+typealias OnMessageClick = (FilmItemDataView) -> Unit
+
 open class FilmViewHolder(val binding: FilmItemBinding):RecyclerView.ViewHolder(binding.root)
 
 class FilmListAdapter @Inject constructor():ListAdapter<FilmItemDataView,FilmViewHolder>(diffUtil) {
@@ -32,15 +34,19 @@ class FilmListAdapter @Inject constructor():ListAdapter<FilmItemDataView,FilmVie
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmViewHolder {
-        return object: FilmViewHolder(FilmItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)){
+    var callBack: OnMessageClick? = null
 
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmViewHolder {
+        return object: FilmViewHolder(FilmItemBinding.inflate(LayoutInflater.from(parent.context),
+            parent,false)){   }
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
         val film = getItem(position)
         Glide.with(holder.binding.imageRow).load(film.imageUrl).into(holder.binding.imageRow)
         holder.binding.textRow.text = film.title
+        holder.binding.root.setOnClickListener{
+            callBack?.invoke(film)
+        }
     }
 }
