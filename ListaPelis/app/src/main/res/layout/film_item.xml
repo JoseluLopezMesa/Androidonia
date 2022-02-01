@@ -5,7 +5,9 @@
     android:id="@+id/row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:background="#000000"
+    android:backgroundTint="@color/black">
 
     <ImageView
         android:id="@+id/imageRow"
@@ -25,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/imageRow"
         app:layout_constraintStart_toStartOf="@+id/imageRow"
         app:layout_constraintTop_toBottomOf="@+id/imageRow" />

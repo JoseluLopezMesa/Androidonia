@@ -1,10 +1,12 @@
 package es.miempresa.listapelis.list
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
+import es.miempresa.listapelis.MainActivity
 import es.miempresa.listapelis.PelisLog
 import es.miempresa.listapelis.databinding.FilmListBinding
 import javax.inject.Inject
@@ -31,8 +33,11 @@ class FilmListActivity : AppCompatActivity() {
         viewModel.films.observe(this){
             adapter.submitList(it)
         }
-        adapter .callBack = {
+        adapter.callBack = {
             myLog.log("Click en pelicula${it.title}")
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

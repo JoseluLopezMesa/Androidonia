@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#000000"
+    android:backgroundTint="@color/black"
     android:scrollbarSize="8dp"
     android:scrollbars="vertical"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
