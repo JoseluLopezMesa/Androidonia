@@ -2,7 +2,6 @@ package es.miempresa.listapelis.list
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +36,7 @@ class FilmListActivity : AppCompatActivity() {
             myLog.log("Click en pelicula${it.title}")
 
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(MainActivity.FILM_ID,it.id)
             startActivity(intent)
         }
     }

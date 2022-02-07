@@ -19,11 +19,9 @@ class MainViewModel @Inject constructor(private val useCase: GetFilmUseCase
 
     fun loadFilm(id:Int){
         val language = Locale.getDefault().language
-        //val loadedFilm = useCase .execute()
-        //filmLiveData.value = FilmDataView(loadedFilm.title,loadedFilm.directorName)
 
         job = CoroutineScope(Dispatchers.IO).launch{
-            val loadedFilm = useCase.execute(550,language)
+            val loadedFilm = useCase.execute(id,language)
             withContext(Dispatchers.Main){
                 loadedFilm?.let{
                     filmLiveData.value = FilmDataView(

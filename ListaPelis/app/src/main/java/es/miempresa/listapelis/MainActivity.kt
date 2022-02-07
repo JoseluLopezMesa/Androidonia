@@ -5,24 +5,21 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import es.miempresa.domain.Film
-import es.miempresa.domain.GetFilmListUseCase
-import es.miempresa.domain.GetFilmUseCase
 import es.miempresa.listapelis.databinding.ActivityMainBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    companion object{
+        const val FILM_ID = "ID"
+    }
+
     @Inject
     lateinit var log: PelisLog
-    //@Inject
-    //lateinit var film: GetFilmUseCase
-    //@Inject
-    //lateinit var filmList: GetFilmListUseCase
+
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
 
@@ -32,23 +29,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val id = intent?.extras?.getInt(FILM_ID,0)?:512195
+
         binding.imageView.setImageResource(R.drawable.venom)
         binding.textView.text = resources.getString(R.string.hello)
         log.log("onCreate")
 
-        viewModel.loadFilm(550)
+        viewModel.loadFilm(id)
         viewModel.film.observe(this){
             binding.filmDirector.text = it.directorName
             binding.filmTitle.text = it.title
             binding.descriptionFilm.text = it.description
-            binding.ratingBar.rating = it.rating.toFloat()
+            binding.ratingBar.rating = it.rating.toFloat()/2
             Glide.with(this).load(it.urlImage).into(binding.imageView)
         }
-        //val executedFilm = film.execute()
-        //log.log(executedFilm.title)
-
-        //val executeFilmList = filmList.execute()
-        //log.log(executeFilmList.joinToString { "," })
 
         Toast.makeText(this, "Pulsa sobre Hola Mundo", Toast.LENGTH_LONG).show()
     }
