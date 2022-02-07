@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
-import es.miempresa.listapelis.MainActivity
-import es.miempresa.listapelis.PelisLog
+import es.miempresa.listapelis.detail.MainActivity
+import es.miempresa.listapelis.detail.PelisLog
 import es.miempresa.listapelis.databinding.FilmListBinding
 import javax.inject.Inject
 

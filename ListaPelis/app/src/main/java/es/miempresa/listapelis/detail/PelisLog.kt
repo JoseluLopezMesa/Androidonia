@@ -1,4 +1,4 @@
-package es.miempresa.listapelis
+package es.miempresa.listapelis.detail
 
 import android.util.Log
 import javax.inject.Inject

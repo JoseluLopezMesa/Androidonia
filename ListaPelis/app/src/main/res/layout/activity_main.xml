@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,14 +8,14 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     app:layoutDescription="@xml/activity_main_scene"
-    tools:context=".MainActivity">
+    tools:context=".detail.MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/primary"
-        android:textSize="10sp"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
         app:layout_constraintStart_toEndOf="@+id/ratingBar"
         app:layout_constraintTop_toTopOf="@+id/ratingBar"
@@ -44,19 +45,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        tools:text="@string/title"
         android:textColor="@color/cardview_light_background"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:text="@string/title" />
 
     <Button
-        android:id="@+id/btnBuy"
+        android:id="@+id/btnTrailer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primary"
-        android:text="@string/textBuy"
+        android:text="@string/textTrailer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnRent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -105,7 +106,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/filmTitle"

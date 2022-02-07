@@ -1,4 +1,4 @@
-package es.miempresa.listapelis
+package es.miempresa.listapelis.detail
 
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
@@ -29,7 +29,8 @@ class MainViewModel @Inject constructor(private val useCase: GetFilmUseCase
                     it.directorName ?:"",
                         it.description,
                         it.urlImg,
-                        it.rating
+                        it.rating,
+                        it.videoId
                     )
                 }
             }
@@ -44,4 +45,4 @@ class MainViewModel @Inject constructor(private val useCase: GetFilmUseCase
     }
 }
 
-data class  FilmDataView(val title:String,val directorName:String,val description: String,val urlImage:String?,val rating:Double)
+data class  FilmDataView(val title:String,val directorName:String,val description: String,val urlImage:String?,val rating:Double,val videoId:String?)

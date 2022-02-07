@@ -1,12 +1,15 @@
-package es.miempresa.listapelis
+package es.miempresa.listapelis.detail
 
+import android.content.Intent
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import es.miempresa.listapelis.R
 import es.miempresa.listapelis.databinding.ActivityMainBinding
 import javax.inject.Inject
 
@@ -42,7 +45,22 @@ class MainActivity : AppCompatActivity() {
             binding.descriptionFilm.text = it.description
             binding.ratingBar.rating = it.rating.toFloat()/2
             Glide.with(this).load(it.urlImage).into(binding.imageView)
+
+            if(it.videoId == null){
+                binding.btnTrailer.visibility = View.GONE
+            }else{
+                binding.btnTrailer.visibility = View.VISIBLE
+                binding.btnTrailer.setOnClickListener{_ ->
+                    launchYouTube(it.videoId)
+                }
+            }
         }
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun launchYouTube(id:String){
+        val intent= Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=$id"))
+        startActivity(intent)
     }
 
     override fun onResume() {

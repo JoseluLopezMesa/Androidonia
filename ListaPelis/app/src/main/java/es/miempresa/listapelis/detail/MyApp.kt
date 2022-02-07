@@ -1,4 +1,4 @@
-package es.miempresa.listapelis
+package es.miempresa.listapelis.detail
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -17,14 +17,19 @@ class ServerDataSource @Inject constructor() {
         val creditsDto = api.getCredits(id)
         val director = creditsDto.cast.firstOrNull{it.role == "Directing"}?.name?:""
         val image = getFullUrl(filmDto.imageUrl)
+        val video = api.getVideos(id,language).results.filter {
+            it.site == "YouTube"
+        }.firstOrNull{
+            it.type == "Trailer"
+        }?.id
 
-        return Film(filmDto.id,filmDto.title,image,filmDto.rating,director,filmDto.description,"","")
+        return Film(filmDto.id,filmDto.title,image,filmDto.rating,director,filmDto.description,"","",video)
     }
 
     suspend fun getFilms(language: String):List<Film>{
         return api.getPopular(language).films.map {
             val image = getFullUrl(it.imageUrl)
-            Film(it.id,it.title,image,it.rating,"",it.description,"","")
+            Film(it.id,it.title,image,it.rating,"",it.description,"","",null)
         }
     }
     private fun getFullUrl(imageUrl:String)= imageUrl.let {
