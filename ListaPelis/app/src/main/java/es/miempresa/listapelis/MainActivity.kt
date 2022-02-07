@@ -43,8 +43,6 @@ class MainActivity : AppCompatActivity() {
             binding.ratingBar.rating = it.rating.toFloat()/2
             Glide.with(this).load(it.urlImage).into(binding.imageView)
         }
-
-        Toast.makeText(this, "Pulsa sobre Hola Mundo", Toast.LENGTH_LONG).show()
     }
 
     override fun onResume() {

@@ -27,6 +27,6 @@ class ServerDataSource @Inject constructor() {
             Film(it.id,it.title,image,it.rating,"",it.description,"","")
         }
     }
-    private fun getFullUrl(imageUrl:String)= imageUrl?.let {
+    private fun getFullUrl(imageUrl:String)= imageUrl.let {
         "https://image.tmdb.org/t/p/w500$it" }
 }
