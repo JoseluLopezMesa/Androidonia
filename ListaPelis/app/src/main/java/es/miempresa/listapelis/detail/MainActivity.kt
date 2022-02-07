@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             binding.descriptionFilm.text = it.description
             binding.ratingBar.rating = it.rating.toFloat()/2
             Glide.with(this).load(it.urlImage).into(binding.imageView)
+            title = it.title
 
             if(it.videoId == null){
                 binding.btnTrailer.visibility = View.GONE
