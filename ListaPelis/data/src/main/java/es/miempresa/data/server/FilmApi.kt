@@ -1,4 +1,4 @@
-package es.miempresa.data
+package es.miempresa.data.server
 
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,20 +10,24 @@ interface FilmApi {
     @GET("movie/{id}")
     suspend fun getFilm(@Path("id")filmId:Int,
                         @Query("language")language:String,
-                        @Query("api_key")apiKey:String = API_KEY):FilmDto
+                        @Query("api_key")apiKey:String = API_KEY
+    ): FilmDto
 
     @GET("movie/{id}/credits")
     suspend fun getCredits(@Path("id")filmId:Int,
-                        @Query("api_key")apiKey:String = API_KEY):CreditsDto
+                        @Query("api_key")apiKey:String = API_KEY
+    ): CreditsDto
 
     @GET("movie/popular")
     suspend fun getPopular(@Query("language")language:String,
-                           @Query("api_key")apiKey:String = API_KEY):FilmListResultDto
+                           @Query("api_key")apiKey:String = API_KEY
+    ): FilmListResultDto
 
     @GET("movie/{id}/videos")
     suspend fun getVideos(@Path("id")filmId: Int,
                           @Query("language")language:String,
-                          @Query("api_key")apiKey:String = API_KEY):VideoResultDto
+                          @Query("api_key")apiKey:String = API_KEY
+    ): VideoResultDto
 
 
 }

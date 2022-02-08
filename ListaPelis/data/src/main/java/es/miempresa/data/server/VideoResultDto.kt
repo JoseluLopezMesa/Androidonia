@@ -1,4 +1,4 @@
-package es.miempresa.data
+package es.miempresa.data.server
 
 import com.google.gson.annotations.SerializedName
 

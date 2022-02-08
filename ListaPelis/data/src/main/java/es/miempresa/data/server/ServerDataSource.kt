@@ -1,4 +1,4 @@
-package es.miempresa.data
+package es.miempresa.data.server
 
 import es.miempresa.domain.Film
 import retrofit2.Retrofit
@@ -10,7 +10,7 @@ class ServerDataSource @Inject constructor() {
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    private val api:FilmApi = retrofit.create(FilmApi::class.java)
+    private val api: FilmApi = retrofit.create(FilmApi::class.java)
 
     suspend fun getFilm(id:Int,language:String,): Film {
         val filmDto = api.getFilm(id,language)
