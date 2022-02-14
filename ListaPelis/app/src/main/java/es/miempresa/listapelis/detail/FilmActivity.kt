@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import es.miempresa.listapelis.R
-import es.miempresa.listapelis.databinding.ActivityMainBinding
+import es.miempresa.listapelis.databinding.FilmActivityBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -23,13 +23,13 @@ class FilmActivity : AppCompatActivity() {
     @Inject
     lateinit var log: PelisLog
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: FilmActivityBinding
     private val viewModel: MainViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = FilmActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val id = intent?.extras?.getInt(FILM_ID,0)?:512195
