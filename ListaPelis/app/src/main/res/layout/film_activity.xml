@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     app:layoutDescription="@xml/activity_main_scene"
-    tools:context=".detail.MainActivity">
+    tools:context=".detail.FilmActivity">
 
     <TextView
         android:id="@+id/textView"

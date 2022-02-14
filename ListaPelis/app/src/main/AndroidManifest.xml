@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".detail.MainActivity"
+            android:name=".detail.FilmActivity"
             android:exported="true">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"

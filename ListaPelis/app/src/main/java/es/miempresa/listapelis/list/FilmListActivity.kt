@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
-import es.miempresa.listapelis.detail.MainActivity
+import es.miempresa.listapelis.detail.FilmActivity
 import es.miempresa.listapelis.detail.PelisLog
 import es.miempresa.listapelis.databinding.FilmListBinding
 import javax.inject.Inject
@@ -35,8 +35,8 @@ class FilmListActivity : AppCompatActivity() {
         adapter.callBack = {
             myLog.log("Click en pelicula${it.title}")
 
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra(MainActivity.FILM_ID,it.id)
+            val intent = Intent(this, FilmActivity::class.java)
+            intent.putExtra(FilmActivity.FILM_ID,it.id)
             startActivity(intent)
         }
     }

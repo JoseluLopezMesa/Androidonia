@@ -14,7 +14,7 @@ import es.miempresa.listapelis.databinding.ActivityMainBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class FilmActivity : AppCompatActivity() {
 
     companion object{
         const val FILM_ID = "ID"
